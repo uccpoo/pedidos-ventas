@@ -1,0 +1,12 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/ordersdb
+    username: root
+    password: yourpassword
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
