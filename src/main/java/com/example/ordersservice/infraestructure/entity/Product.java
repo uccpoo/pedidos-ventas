@@ -1,4 +1,4 @@
-package com.example.ordersservice.model;
+package com.example.ordersservice.infraestructure.entity;
 
 import javax.persistence.*;
 

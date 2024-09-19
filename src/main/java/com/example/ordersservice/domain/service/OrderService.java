@@ -1,9 +1,10 @@
-package com.example.ordersservice.service;
+package com.example.ordersservice.domain.service;
 
+import com.example.ordersservice.domain.repository.OrderRepository;
 import com.example.ordersservice.exception.OrderException;
-import com.example.ordersservice.model.Order;
-import com.example.ordersservice.model.Product;
-import com.example.ordersservice.repository.OrderRepository;
+import com.example.ordersservice.infraestructure.entity.Order;
+import com.example.ordersservice.infraestructure.entity.Product;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
