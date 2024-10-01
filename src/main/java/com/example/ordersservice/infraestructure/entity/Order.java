@@ -1,7 +1,6 @@
 package com.example.ordersservice.infraestructure.entity;
 
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,8 +19,8 @@ public class Order {
     private double totalAmount;
     private String status;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Product> products;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
+    private List<OrderDetail> orderDetails;
 
     // Getters y Setters
     public Long getOrderId() {
@@ -56,11 +55,11 @@ public class Order {
         this.status = status;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public List<OrderDetail> getOrderDetails() {
+        return orderDetails;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setOrderDetails(List<OrderDetail> orderDetails) {
+        this.orderDetails = orderDetails;
     }
 }

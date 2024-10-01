@@ -3,6 +3,7 @@ package com.example.ordersservice.domain.service;
 import com.example.ordersservice.domain.repository.OrderRepository;
 import com.example.ordersservice.exception.OrderException;
 import com.example.ordersservice.infraestructure.entity.Order;
+import com.example.ordersservice.infraestructure.entity.OrderDetail;
 import com.example.ordersservice.infraestructure.entity.Product;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +21,17 @@ public class OrderService {
     private StockService stockService;
 
     public Order crearPedido(Order order) throws OrderException {
-        for (Product product : order.getProducts()) {
-            if (!stockService.validarStock(product.getProductId(), product.getQuantity())) {
+        // Validación de stock antes de procesar el pedido
+        for (OrderDetail detail : order.getOrderDetails()) {
+            Product product = detail.getProduct();
+            if (!stockService.validarStock(product.getProductId(), detail.getQuantity())) {
                 throw new OrderException("Stock insuficiente para el producto con ID: " + product.getProductId());
             }
         }
 
-        double totalAmount = order.getProducts().stream()
-                .mapToDouble(p -> p.getPrice() * p.getQuantity())
+        // Calcular el totalAmount
+        double totalAmount = order.getOrderDetails().stream()
+                .mapToDouble(detail -> detail.getPrice() * detail.getQuantity())
                 .sum();
         order.setTotalAmount(totalAmount);
         order.setStatus("pendiente");

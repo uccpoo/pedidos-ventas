@@ -7,7 +7,6 @@ public class DetallePedidoDTO {
     private int cantidad;
     private double precio;
 
-    // Getters y Setters
     public int getDetalleId() {
         return detalleId;
     }
@@ -37,6 +36,9 @@ public class DetallePedidoDTO {
     }
 
     public void setCantidad(int cantidad) {
+        if (cantidad <= 0) {
+            throw new IllegalArgumentException("La cantidad debe ser mayor que cero");
+        }
         this.cantidad = cantidad;
     }
 
@@ -45,6 +47,9 @@ public class DetallePedidoDTO {
     }
 
     public void setPrecio(double precio) {
+        if (precio < 0) {
+            throw new IllegalArgumentException("El precio no puede ser negativo");
+        }
         this.precio = precio;
     }
 }

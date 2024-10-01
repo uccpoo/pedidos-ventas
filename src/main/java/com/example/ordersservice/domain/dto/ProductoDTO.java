@@ -7,7 +7,6 @@ public class ProductoDTO {
     private double precio;
     private int stock;
 
-    // Getters y Setters
     public int getProductoId() {
         return productoId;
     }
@@ -37,6 +36,9 @@ public class ProductoDTO {
     }
 
     public void setPrecio(double precio) {
+        if (precio < 0) {
+            throw new IllegalArgumentException("El precio no puede ser negativo");
+        }
         this.precio = precio;
     }
 
@@ -45,6 +47,9 @@ public class ProductoDTO {
     }
 
     public void setStock(int stock) {
+        if (stock < 0) {
+            throw new IllegalArgumentException("El stock no puede ser negativo");
+        }
         this.stock = stock;
     }
 }

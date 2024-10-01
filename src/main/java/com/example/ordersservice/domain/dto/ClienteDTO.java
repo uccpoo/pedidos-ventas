@@ -7,7 +7,6 @@ public class ClienteDTO {
     private String telefono;
     private String direccion;
 
-    // Getters y Setters
     public int getClienteId() {
         return clienteId;
     }
