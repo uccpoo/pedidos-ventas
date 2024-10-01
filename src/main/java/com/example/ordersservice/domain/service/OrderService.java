@@ -20,20 +20,18 @@ public class OrderService {
     private StockService stockService;
 
     public Order crearPedido(Order order) throws OrderException {
-        // Validación de stock antes de procesar el pedido
         for (Product product : order.getProducts()) {
             if (!stockService.validarStock(product.getProductId(), product.getQuantity())) {
                 throw new OrderException("Stock insuficiente para el producto con ID: " + product.getProductId());
             }
         }
-        
-        // Calcular el totalAmount
+
         double totalAmount = order.getProducts().stream()
                 .mapToDouble(p -> p.getPrice() * p.getQuantity())
                 .sum();
         order.setTotalAmount(totalAmount);
         order.setStatus("pendiente");
-        
+
         return orderRepository.save(order);
     }
 
@@ -47,7 +45,7 @@ public class OrderService {
         } else if (status != null) {
             return orderRepository.findByStatus(status);
         }
-        return orderRepository.findAll();
+        return (List<Order>) orderRepository.findAll();
     }
 
     public Order actualizarEstadoPedido(Long orderId, String status) {
@@ -57,5 +55,9 @@ public class OrderService {
             return orderRepository.save(order);
         }
         return null;
+    }
+
+    public void eliminarPedido(Long orderId) {
+        orderRepository.deleteById(orderId);
     }
 }
