@@ -1,4 +1,3 @@
-
 package com.example.ordersservice.infraestructure.entity;
 
 import jakarta.persistence.Entity;
@@ -17,18 +16,19 @@ public class Customer {
 
     private String name;
     private String email;
+    private String telefono;  // Propiedad agregada
+    private String direccion; // Propiedad agregada
 
-  
-    public Customer() {
-    }
+    public Customer() {}
 
- 
-    public Customer(String name, String email) {
+    public Customer(String name, String email, String telefono, String direccion) {
         this.name = name;
         this.email = email;
+        this.telefono = telefono;
+        this.direccion = direccion;
     }
 
-   
+    // Getters y Setters
     public Long getCustomerId() {
         return customerId;
     }
@@ -53,13 +53,30 @@ public class Customer {
         this.email = email;
     }
 
-    // Método toString para facilitar la depuración
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
                 "customerId=" + customerId +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", direccion='" + direccion + '\'' +
                 '}';
     }
 }

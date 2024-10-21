@@ -3,13 +3,13 @@ package com.example.ordersservice.domain.dto;
 import java.util.Date;
 import java.util.List;
 
-public class PedidoDTO {
+public class OrdersDTO {
     private int pedidoId;
     private int clienteId;
     private Date fecha;
     private String estado;
     private double total;
-    private List<DetallePedidoDTO> detalles;
+    private List<OrdersDetailDTO> detalles;
 
     // Getters y Setters
     public int getPedidoId() {
@@ -52,11 +52,11 @@ public class PedidoDTO {
         this.total = total;
     }
 
-    public List<DetallePedidoDTO> getDetalles() {
+    public List<OrdersDetailDTO> getDetalles() {
         return detalles;
     }
 
-    public void setDetalles(List<DetallePedidoDTO> detalles) {
+    public void setDetalles(List<OrdersDetailDTO> detalles) {
         this.detalles = detalles;
     }
 }
