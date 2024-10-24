@@ -1,12 +1,13 @@
 package com.example.ordersservice.domain.dto;
 
-public class DetallePedidoDTO {
+public class OrdersDetailDTO {
     private int detalleId;
     private int pedidoId;
     private int productoId;
     private int cantidad;
     private double precio;
 
+    // Getters y Setters
     public int getDetalleId() {
         return detalleId;
     }

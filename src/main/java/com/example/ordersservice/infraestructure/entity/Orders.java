@@ -1,15 +1,18 @@
 package com.example.ordersservice.infraestructure.entity;
 
+import java.util.Date;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
-public class Order {
+@Table(name = "orders")  
+public class Orders {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,9 +21,10 @@ public class Order {
     private Long customerId;
     private double totalAmount;
     private String status;
+    private Date fecha;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
-    private List<OrderDetail> orderDetails;
+    private List<OrdersDetail> orderDetails;
 
     // Getters y Setters
     public Long getOrderId() {
@@ -55,11 +59,19 @@ public class Order {
         this.status = status;
     }
 
-    public List<OrderDetail> getOrderDetails() {
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public List<OrdersDetail> getOrderDetails() {
         return orderDetails;
     }
 
-    public void setOrderDetails(List<OrderDetail> orderDetails) {
+    public void setOrderDetails(List<OrdersDetail> orderDetails) {
         this.orderDetails = orderDetails;
     }
 }

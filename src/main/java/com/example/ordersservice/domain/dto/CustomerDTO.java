@@ -1,26 +1,27 @@
 package com.example.ordersservice.domain.dto;
 
-public class ClienteDTO {
-    private int clienteId;
-    private String nombre;
+public class CustomerDTO {
+    private int customerId;
+    private String name;
     private String email;
     private String telefono;
     private String direccion;
 
-    public int getClienteId() {
-        return clienteId;
+    // Getters y Setters
+    public int getCustomerId() {
+        return customerId;
     }
 
-    public void setClienteId(int clienteId) {
-        this.clienteId = clienteId;
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
